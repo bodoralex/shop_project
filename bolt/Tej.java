@@ -19,10 +19,15 @@ public class Tej {
 		this.ar = ar;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Gyarto: %s | Urtartalom: %s | Zsirtartalom: %s | Szavatossag : %s | Ar : %s", getGyarto(),
+				getUrtartalom(), getZsirtartalom(), getSzavatossagiIdo(), getAr());
+	}
+
 	public boolean joMeg() {
 		Date jelenIdo = new Date();
-		return jelenIdo.before(this.getSzavatossagiIdo());
-
+		return jelenIdo.before(getSzavatossagiIdo());
 	}
 
 	public int getUrtartalom() {
@@ -43,6 +48,11 @@ public class Tej {
 
 	public long getAr() {
 		return ar;
+	}
+
+	public static void main(String[] args) {
+		Tej a = new Tej(0, "kek", new Date(), 22, 545);
+		System.out.println(a);
 	}
 
 }
