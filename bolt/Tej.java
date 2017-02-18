@@ -49,10 +49,4 @@ public class Tej {
 	public long getAr() {
 		return ar;
 	}
-
-	public static void main(String[] args) {
-		Tej a = new Tej(0, "kek", new Date(), 22, 545);
-		System.out.println(a);
-	}
-
 }
