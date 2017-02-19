@@ -3,18 +3,16 @@ package bolt;
 import java.util.Hashtable;
 
 public class Bolt {
-
 	private String nev;
 	private String cim;
 	private String tulajdonos;
-	private Hashtable<Long, Tej> tejpult;
+	private Hashtable<Long, BoltBejegyzes> elelmiszerPult;
 
-	public Bolt(String nev, String cim, String tulajdonos, Hashtable<Long, Tej> tejpult) {
-		super();
+	public Bolt(String nev, String cim, String tulajdonos, Hashtable<Long, BoltBejegyzes> elelmiszerPult) {
 		this.nev = nev;
 		this.cim = cim;
 		this.tulajdonos = tulajdonos;
-		this.tejpult = tejpult;
+		this.elelmiszerPult = elelmiszerPult;
 	}
 
 	public Bolt(String nev, String cim, String tulajdonos) {
@@ -23,26 +21,50 @@ public class Bolt {
 		this.tulajdonos = tulajdonos;
 	}
 
-	public void feltoltTej(Tej m) {
-		if (tejpult == null)
-			tejpult = new Hashtable<Long, Tej>();
-		tejpult.put(m.getVonalkod(), m);
+	public void feltoltUjelelmiszerrel(Elelmiszer e, long mennyiseg, long ar) {
+		if (elelmiszerPult == null)
+			elelmiszerPult = new Hashtable<Long, BoltBejegyzes>();
+		BoltBejegyzes bB = new BoltBejegyzes(e, mennyiseg, ar);
+		elelmiszerPult.put(e.getVonalkod(), bB);
+	}
+
+	public void feltoltElelmiszerrel(long vonalKod, long mennyiseg) {
+		elelmiszerPult.get(vonalKod).adMennyiseg(mennyiseg);
+	}
+
+	public void torolElelmiszert(long volnalKod) {
+		elelmiszerPult.remove(volnalKod);
+	}
+
+	public void vasarolElelmiszert(long vonalkod, long mennyiseg) {
+		elelmiszerPult.get(vonalkod).levonMennyiseg(mennyiseg);
+	}
+
+	protected boolean vanMegAdottAru(@SuppressWarnings("rawtypes") Class c) {
+		for (BoltBejegyzes bB : elelmiszerPult.values()) {
+			if (c.equals(bB.getElemiszer().getClass())) {
+				return bB.mennyiseg > 0 ? true : false;
+			}
+		}
+		return false;
 	}
 
 	public boolean vanMegTej() {
-		if (tejpult == null || tejpult.size() == 0)
-			return false;
-		return true;
+		for (BoltBejegyzes bB : elelmiszerPult.values()) {
+			if (bB.getElemiszer().getClass().getSuperclass() == Tej.class) {
+				return bB.mennyiseg > 0 ? true : false;
+			}
+		}
+		return false;
 	}
 
-	public Tej vasarolTej(long vonalKod) {
-		if (tejpult.contains(vonalKod)) {
-			Tej ki = tejpult.get(vonalKod);
-			tejpult.remove(vonalKod);
-			return ki;
+	public boolean vanMegSajt() {
+		for (BoltBejegyzes bB : elelmiszerPult.values()) {
+			if (bB.getElemiszer() instanceof Sajt) {
+				return bB.mennyiseg > 0 ? true : false;
+			}
 		}
-		System.out.println("A kért tej nem létezik.");
-		return null;
+		return false;
 	}
 
 	public String getNev() {
@@ -59,34 +81,34 @@ public class Bolt {
 
 	class BoltBejegyzes {
 
-		private Tej t;
-		private int mennyiseg;
-		private int ar;
+		private Elelmiszer e;
+		private long mennyiseg;
+		private long ar;
 
-		public BoltBejegyzes(Tej t, int mennyiseg, int ar) {
+		public BoltBejegyzes(Elelmiszer e, long mennyiseg, long ar) {
 			super();
-			this.t = t;
+			this.e = e;
 			this.mennyiseg = mennyiseg;
 			this.ar = ar;
 		}
 
-		public Tej getT() {
-			return t;
+		public Elelmiszer getElemiszer() {
+			return e;
 		}
 
-		public void setT(Tej t) {
-			this.t = t;
+		public void setElelmiszer(Elelmiszer e) {
+			this.e = e;
 		}
 
-		public int getMennyiseg() {
+		public long getMennyiseg() {
 			return mennyiseg;
 		}
 
-		public void adMennyiseg(int mennyiseg) {
+		public void adMennyiseg(long mennyiseg) {
 			this.mennyiseg += mennyiseg;
 		}
 
-		public void levonMennyiseg(int mennyiseg) {
+		public void levonMennyiseg(long mennyiseg) {
 			this.mennyiseg -= mennyiseg;
 		}
 
@@ -94,7 +116,7 @@ public class Bolt {
 			this.mennyiseg = mennyiseg;
 		}
 
-		public int getAr() {
+		public long getAr() {
 			return ar;
 		}
 

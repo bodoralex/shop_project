@@ -2,7 +2,7 @@ package bolt;
 
 import java.util.Date;
 
-public class Sajt extends Elemiszer {
+public class Sajt extends Elelmiszer {
 	protected double suly;
 	protected double zsirtartalom;
 

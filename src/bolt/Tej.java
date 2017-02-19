@@ -2,7 +2,7 @@ package bolt;
 
 import java.util.Date;
 
-public abstract class Tej extends Elemiszer {
+public abstract class Tej extends Elelmiszer {
 
 	protected int urtartalom;
 	protected String gyarto;
