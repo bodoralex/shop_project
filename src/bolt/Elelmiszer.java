@@ -2,14 +2,11 @@ package bolt;
 
 import java.util.Date;
 
-public abstract class Elelmiszer {
-	private Long vonalkod;
-	private String gyarto;
+public abstract class Elelmiszer extends Aru {
 	private Date szavatossagiIdo;
 
 	public Elelmiszer(long vonalKod, String gyarto, Date szavatossagiIdo) {
-		this.vonalkod = vonalKod;
-		this.gyarto = gyarto;
+		super(vonalKod, gyarto);
 		this.szavatossagiIdo = szavatossagiIdo;
 	}
 
@@ -20,20 +17,10 @@ public abstract class Elelmiszer {
 
 	@Override
 	public String toString() {
-		return String.format("Gyarto: %s |Szavatossag : %s | Vonalkod : %s |", getGyarto(), getSzavatossagiIdo(),
-				getVonalkod());
-	}
-
-	public long getVonalkod() {
-		return vonalkod;
-	}
-
-	public String getGyarto() {
-		return gyarto;
+		return super.toString() + String.format("Szavatossag : %s | ", getSzavatossagiIdo());
 	}
 
 	public Date getSzavatossagiIdo() {
 		return szavatossagiIdo;
 	}
-
 }
