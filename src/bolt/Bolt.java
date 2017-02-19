@@ -26,7 +26,7 @@ public class Bolt {
 	public void feltoltTej(Tej m) {
 		if (tejpult == null)
 			tejpult = new Hashtable<Long, Tej>();
-		tejpult.put(m.getVonalKod(), m);
+		tejpult.put(m.getVonalkod(), m);
 	}
 
 	public boolean vanMegTej() {

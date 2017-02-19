@@ -1,7 +1,8 @@
 package bolt;
+
 import java.util.Date;
 
-public abstract class Tej {
+public abstract class Tej extends Elemiszer {
 
 	protected int urtartalom;
 	protected String gyarto;
@@ -16,39 +17,20 @@ public abstract class Tej {
 	public final double ZSIROS = 3.5;
 	public final double FELZSIROS = 1.5;
 
-	public Tej(long vonalKod, int urtartalom, String gyarto, Date szavatossag, double zsirtartalom) {
-		this.vonalKod = vonalKod;
+	public Tej(long vonalKod, int urtartalom, String gyarto, Date szavatossagiIdo, double zsirtartalom) {
+		super(vonalKod, gyarto, szavatossagiIdo);
 		this.urtartalom = urtartalom;
-		this.gyarto = gyarto;
-		this.szavatossagiIdo = szavatossag;
 		this.zsirtartalom = zsirtartalom;
-	}
-
-	public long getVonalKod() {
-		return vonalKod;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Gyarto: %s | Urtartalom: %s | Zsirtartalom: %s | Szavatossag : %s | Ar : %s", getGyarto(),
-				getUrtartalom(), getZsirtartalom(), getSzavatossagiIdo());
-	}
-
-	public boolean joMeg() {
-		Date jelenIdo = new Date();
-		return jelenIdo.before(getSzavatossagiIdo());
+		return super.toString()
+				+ String.format("Urtartalom : %s | Zsírtartalom : %s", getUrtartalom(), getZsirtartalom());
 	}
 
 	public int getUrtartalom() {
 		return urtartalom;
-	}
-
-	public String getGyarto() {
-		return gyarto;
-	}
-
-	public Date getSzavatossagiIdo() {
-		return szavatossagiIdo;
 	}
 
 	public double getZsirtartalom() {

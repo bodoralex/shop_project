@@ -1,8 +1,7 @@
 package tej;
+
 import java.util.Date;
-
 import bolt.Tej;
-
 
 public class TartosTej extends Tej {
 
