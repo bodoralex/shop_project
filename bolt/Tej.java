@@ -8,23 +8,21 @@ public class Tej {
 	protected String gyarto;
 	protected Date szavatossagiIdo;
 	protected double zsirtartalom;
-	protected long ar;
 
 	protected long vonalKod;
 
-	protected final int LITER = 10;
-	protected final int FELLITER = 5;
-	protected final int POHAR = 2;
-	protected final double ZSIROS = 3.5;
-	protected final double FELZSIROS = 1.5;
+	public final int LITER = 10;
+	public final int FELLITER = 5;
+	public final int POHAR = 2;
+	public final double ZSIROS = 3.5;
+	public final double FELZSIROS = 1.5;
 
-	public Tej(long vonalKod, int urtartalom, String gyarto, Date szavatossag, double zsirtartalom, long ar) {
+	public Tej(long vonalKod, int urtartalom, String gyarto, Date szavatossag, double zsirtartalom) {
 		this.vonalKod = vonalKod;
 		this.urtartalom = urtartalom;
 		this.gyarto = gyarto;
 		this.szavatossagiIdo = szavatossag;
 		this.zsirtartalom = zsirtartalom;
-		this.ar = ar;
 	}
 
 	public long getVonalKod() {
@@ -34,7 +32,7 @@ public class Tej {
 	@Override
 	public String toString() {
 		return String.format("Gyarto: %s | Urtartalom: %s | Zsirtartalom: %s | Szavatossag : %s | Ar : %s", getGyarto(),
-				getUrtartalom(), getZsirtartalom(), getSzavatossagiIdo(), getAr());
+				getUrtartalom(), getZsirtartalom(), getSzavatossagiIdo());
 	}
 
 	public boolean joMeg() {
@@ -58,7 +56,4 @@ public class Tej {
 		return zsirtartalom;
 	}
 
-	public long getAr() {
-		return ar;
-	}
 }
