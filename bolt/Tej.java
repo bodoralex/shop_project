@@ -10,13 +10,25 @@ public class Tej {
 	protected double zsirtartalom;
 	protected long ar;
 
-	public Tej(int urtartalom, String gyarto, Date szavatossag, double zsirtartalom, long ar) {
-		super();
+	protected long vonalKod;
+
+	protected final int LITER = 10;
+	protected final int FELLITER = 5;
+	protected final int POHAR = 2;
+	protected final double ZSIROS = 3.5;
+	protected final double FELZSIROS = 1.5;
+
+	public Tej(long vonalKod, int urtartalom, String gyarto, Date szavatossag, double zsirtartalom, long ar) {
+		this.vonalKod = vonalKod;
 		this.urtartalom = urtartalom;
 		this.gyarto = gyarto;
 		this.szavatossagiIdo = szavatossag;
 		this.zsirtartalom = zsirtartalom;
 		this.ar = ar;
+	}
+
+	public long getVonalKod() {
+		return vonalKod;
 	}
 
 	@Override
