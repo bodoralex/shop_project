@@ -16,7 +16,12 @@ public class Bolt {
 		this.cim = cim;
 		this.tulajdonos = tulajdonos;
 		this.tejpult = tejpult;
+		
 	}
+	public void feltoltTej(Tej m){
+		tejpult.add(m);
+	}
+		
 	public boolean vanMegTej(){
 		if(tejpult == null || tejpult.size() == 0) return false;
 		return true;
