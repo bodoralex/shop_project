@@ -1,6 +1,8 @@
-package bolt;
+package tej;
 
 import java.util.Date;
+import bolt.Tej;
+
 
 public class FeltartosTej extends Tej {
 

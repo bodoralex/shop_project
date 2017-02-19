@@ -18,7 +18,6 @@ public class Bolt {
 	}
 
 	public Bolt(String nev, String cim, String tulajdonos) {
-		super();
 		this.nev = nev;
 		this.cim = cim;
 		this.tulajdonos = tulajdonos;

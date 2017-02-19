@@ -1,5 +1,4 @@
 package bolt;
-
 import java.util.Date;
 
 public abstract class Tej {
