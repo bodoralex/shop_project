@@ -2,7 +2,7 @@ package bolt;
 
 import java.util.Date;
 
-public class Elemiszer {
+public abstract class Elemiszer {
 	private long vonalkod;
 	private String gyarto;
 	private Date szavatossagiIdo;
