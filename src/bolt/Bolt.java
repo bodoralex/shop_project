@@ -149,8 +149,10 @@ public class Bolt implements Shop {
 
 	@Override
 	public Iterator<Long> aruk() {
-		return (Iterator<Long>) aruPult.keys();
+		return new AruIterator((Iterator<Long>) aruPult.keys());
 	}
+
+
 
 	class AruIterator implements Iterator {
 
