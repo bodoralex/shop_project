@@ -37,6 +37,21 @@ public class Bolt {
 	}
 
 	public void vasarolElelmiszert(long vonalkod, long mennyiseg) {
+		if (elelmiszerPult.get(vonalkod) == null) {
+			try {
+				throw new NemLetezoAruKivetel("Nem letezik ilyen aru.");
+			} catch (NemLetezoAruKivetel e) {
+				e.printStackTrace();
+				System.err.println(e.getMessage());
+			}
+		} else if (elelmiszerPult.get(vonalkod).mennyiseg - mennyiseg < 0) {
+			try {
+				throw new TulsokLevonasKivetel("Nincs ennyi aru.");
+			} catch (TulsokLevonasKivetel e) {
+				e.printStackTrace();
+				System.err.println(e.getMessage());
+			}
+		}
 		elelmiszerPult.get(vonalkod).levonMennyiseg(mennyiseg);
 	}
 
