@@ -9,7 +9,7 @@ import aruk.Tej;
 import kivetel.NemLetezoAruKivetel;
 import kivetel.TulsokLevonasKivetel;
 
-public class Bolt implements Shop{
+public class Bolt implements Shop {
 	private String nev;
 	private String cim;
 	private String tulajdonos;
@@ -148,7 +148,26 @@ public class Bolt implements Shop{
 	}
 
 	@Override
-	public Iterator aruk() {
-		return (Iterator) aruPult.keys();
+	public Iterator<Long> aruk() {
+		return (Iterator<Long>) aruPult.keys();
+	}
+
+	class AruIterator implements Iterator {
+
+		Iterator<Long> i;
+
+		AruIterator(Iterator i) {
+			this.i = i;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return i.hasNext();
+		}
+
+		@Override
+		public Object next() {
+			return i.next();
+		}
 	}
 }
