@@ -1,4 +1,4 @@
-package bolt;
+package aruk;
 
 import java.util.Date;
 
@@ -10,7 +10,6 @@ public class Sajt extends Elelmiszer {
 		super(vonalkod, gyarto, szavatossagiIdo);
 		this.suly = suly;
 		this.zsirtartalom = zsirtartalom;
-
 	}
 
 	public double getSuly() {

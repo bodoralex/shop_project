@@ -2,6 +2,12 @@ package bolt;
 
 import java.util.Hashtable;
 
+import aruk.Elelmiszer;
+import aruk.Sajt;
+import aruk.Tej;
+import kivetel.NemLetezoAruKivetel;
+import kivetel.TulsokLevonasKivetel;
+
 public class Bolt {
 	private String nev;
 	private String cim;

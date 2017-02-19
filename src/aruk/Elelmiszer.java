@@ -1,6 +1,8 @@
-package bolt;
+package aruk;
 
 import java.util.Date;
+
+import bolt.Aru;
 
 public abstract class Elelmiszer extends Aru {
 	private Date szavatossagiIdo;

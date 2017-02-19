@@ -1,4 +1,4 @@
-package bolt;
+package aruk;
 
 import java.util.Date;
 

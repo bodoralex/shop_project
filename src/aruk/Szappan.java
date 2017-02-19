@@ -1,4 +1,6 @@
-package bolt;
+package aruk;
+
+import bolt.Aru;
 
 public class Szappan extends Aru {
 

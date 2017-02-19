@@ -1,7 +1,8 @@
-package tej;
+package aruk.tej;
 
 import java.util.Date;
-import bolt.Tej;
+
+import aruk.Tej;
 
 public class TartosTej extends Tej {
 
